@@ -41,11 +41,10 @@
           </div>
         </div>
         <div>
-          <div class="over" v-if="isModal == false"></div>
-          <div class="over" v-if="isLoginModal == false"></div>
+          <div class="over" v-if="isModal || isLoginModal" @click="closeModal"></div>
 
-          <div class="modal" v-if="isModal == false">
-            <button class="bt" @click="isModal = true">
+          <div class="modal" v-if="isModal">
+            <button class="bt" @click="isModal = false">
               <svg
                 width="44"
                 height="44"
@@ -75,8 +74,8 @@
               </div>
             </div>
           </div>
-          <div class="modal2" v-if="isLoginModal == false">
-            <button class="bt2" @click="isLoginModal = true">
+          <div class="modal2" v-if="isLoginModal">
+            <button class="bt2" @click="isLoginModal = false">
               <svg
                 width="44"
                 height="44"
@@ -118,6 +117,12 @@ export default {
       isLoginModal: false,
     };
   },
+  methods:{
+    closeModal(){
+      this.isModal= false,
+      this.isLoginModal= false;
+    }
+    }
 };
 </script>
 
